@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // we could have all our routes here but it's better to put them in a separate file
 app.use("/api/goals", require("./routes/goalRoutes"))
+app.use("/api/users", require("./routes/userRoutes"))
 
 app.use(errorHandler) // overwrite default express error handler
 

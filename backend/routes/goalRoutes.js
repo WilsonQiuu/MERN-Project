@@ -8,11 +8,14 @@ const {
   updateGoal,
   deleteGoal
 } = require("../controllers/goalController")
+
+const { protect } = require("../middleware/authMiddleware")
+
 // my routes
 // Shortening when they have the same route
-router.route("/").get(getGoals).post(setGoal)
+router.route("/").get(protect, getGoals).post(protect, setGoal)
 
-router.route("/:id").delete(deleteGoal).put(updateGoal)
+router.route("/:id").delete(protect, deleteGoal).put(protect, updateGoal)
 /**
  * router.get("/", getGoals)
  * router.post("/", setGoal)
